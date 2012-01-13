@@ -27,7 +27,7 @@ namespace Recepcion
         public string Rol = String.Empty;
 
         public Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
+        string RutaFotos = string.Empty;
         
 
         private string getDay(string day)
@@ -67,9 +67,14 @@ namespace Recepcion
 
             core.onStatus += new GriauleFingerprintLibrary.StatusEventHandler(core_onStatus);
             core.onImage += new GriauleFingerprintLibrary.ImageEventHandler(core_onImage);
-
-            //core.Initialize();
-            //core.CaptureInitialize();
+            
+            RutaFotos = config.AppSettings.Settings["RutaFotos"].Value.ToString();
+            try
+            {
+                core.Initialize();
+                core.CaptureInitialize();
+            }
+            catch { }
             
         }
 
@@ -125,7 +130,7 @@ namespace Recepcion
 
                                 if (!String.IsNullOrEmpty(foto))
                                 {
-                                    fotoGrafia.ImageLocation = @"c:\wamp\www\gym\fotos\" + foto;
+                                    fotoGrafia.ImageLocation = @RutaFotos + foto;
                                 }
                             }
                             else
@@ -144,7 +149,7 @@ namespace Recepcion
 
                                 if (!String.IsNullOrEmpty(foto))
                                 {
-                                    fotoGrafia.ImageLocation = @"c:\wamp\www\gym\fotos\" + foto;
+                                    fotoGrafia.ImageLocation = @RutaFotos + foto;
                                 }
                             }
 
