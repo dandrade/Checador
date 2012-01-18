@@ -32,11 +32,11 @@
             this.fechaInicial = new System.Windows.Forms.DateTimePicker();
             this.fechaFinal = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -45,7 +45,7 @@
             // 
             // fechaInicial
             // 
-            this.fechaInicial.CustomFormat = "dd/MM/yy";
+            this.fechaInicial.CustomFormat = "yyyy-MM-dd";
             this.fechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaInicial.Location = new System.Drawing.Point(123, 19);
             this.fechaInicial.Name = "fechaInicial";
@@ -54,7 +54,7 @@
             // 
             // fechaFinal
             // 
-            this.fechaFinal.CustomFormat = "dd/MM/yy";
+            this.fechaFinal.CustomFormat = "yyyy-MM-dd";
             this.fechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaFinal.Location = new System.Drawing.Point(363, 19);
             this.fechaFinal.Name = "fechaFinal";
@@ -72,20 +72,21 @@
             this.groupBox1.Controls.Add(this.fechaFinal);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(597, 52);
+            this.groupBox1.Size = new System.Drawing.Size(606, 52);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rango de Fechas";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // label1
+            // button1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Fecha Inicial";
+            this.button1.Location = new System.Drawing.Point(484, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Generar Reporte";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label2
             // 
@@ -96,6 +97,15 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Fecha Final";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Fecha Inicial";
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -104,7 +114,7 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Location = new System.Drawing.Point(12, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(597, 316);
+            this.groupBox2.Size = new System.Drawing.Size(606, 490);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Usuarios";
@@ -117,18 +127,8 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(591, 297);
+            this.dataGridView1.Size = new System.Drawing.Size(600, 471);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(484, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Generar Reporte";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Seleccionar
             // 
@@ -141,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 411);
+            this.ClientSize = new System.Drawing.Size(630, 585);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

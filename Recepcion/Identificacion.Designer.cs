@@ -39,15 +39,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label2 = new System.Windows.Forms.Label();
-            this.no_personal = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.nombre_completo = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.rfc = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.telefono = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.rfc = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.nombre_completo = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.no_personal = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.fotoGrafia)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -95,15 +94,14 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.salirToolStripMenuItem,
-            this.testToolStripMenuItem});
+            this.salirToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(107, 48);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(153, 48);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -145,68 +143,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos del Trabajador";
             // 
-            // testToolStripMenuItem
+            // telefono
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(9, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(125, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Numero de Personal:";
-            // 
-            // no_personal
-            // 
-            this.no_personal.AutoSize = true;
-            this.no_personal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.no_personal.Location = new System.Drawing.Point(158, 34);
-            this.no_personal.Name = "no_personal";
-            this.no_personal.Size = new System.Drawing.Size(0, 13);
-            this.no_personal.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(9, 66);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(110, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Nombre Completo:";
-            // 
-            // nombre_completo
-            // 
-            this.nombre_completo.AutoSize = true;
-            this.nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nombre_completo.Location = new System.Drawing.Point(158, 67);
-            this.nombre_completo.Name = "nombre_completo";
-            this.nombre_completo.Size = new System.Drawing.Size(0, 13);
-            this.nombre_completo.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(9, 99);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "RFC:";
-            // 
-            // rfc
-            // 
-            this.rfc.AutoSize = true;
-            this.rfc.Location = new System.Drawing.Point(158, 100);
-            this.rfc.Name = "rfc";
-            this.rfc.Size = new System.Drawing.Size(0, 13);
-            this.rfc.TabIndex = 5;
+            this.telefono.AutoSize = true;
+            this.telefono.Location = new System.Drawing.Point(158, 133);
+            this.telefono.Name = "telefono";
+            this.telefono.Size = new System.Drawing.Size(0, 13);
+            this.telefono.TabIndex = 7;
             // 
             // label9
             // 
@@ -218,13 +161,61 @@
             this.label9.TabIndex = 6;
             this.label9.Text = "Telefono:";
             // 
-            // telefono
+            // rfc
             // 
-            this.telefono.AutoSize = true;
-            this.telefono.Location = new System.Drawing.Point(158, 133);
-            this.telefono.Name = "telefono";
-            this.telefono.Size = new System.Drawing.Size(0, 13);
-            this.telefono.TabIndex = 7;
+            this.rfc.AutoSize = true;
+            this.rfc.Location = new System.Drawing.Point(158, 100);
+            this.rfc.Name = "rfc";
+            this.rfc.Size = new System.Drawing.Size(0, 13);
+            this.rfc.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 99);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "RFC:";
+            // 
+            // nombre_completo
+            // 
+            this.nombre_completo.AutoSize = true;
+            this.nombre_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nombre_completo.Location = new System.Drawing.Point(158, 67);
+            this.nombre_completo.Name = "nombre_completo";
+            this.nombre_completo.Size = new System.Drawing.Size(0, 13);
+            this.nombre_completo.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(9, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(110, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Nombre Completo:";
+            // 
+            // no_personal
+            // 
+            this.no_personal.AutoSize = true;
+            this.no_personal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.no_personal.Location = new System.Drawing.Point(158, 34);
+            this.no_personal.Name = "no_personal";
+            this.no_personal.Size = new System.Drawing.Size(0, 13);
+            this.no_personal.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Numero de Personal:";
             // 
             // Identificacion
             // 
@@ -268,7 +259,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.Label telefono;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label rfc;

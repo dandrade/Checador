@@ -47,5 +47,10 @@ namespace Recepcion.Logic
         {
             return new DB().registrarEntrada(usuario);
         }
+
+        public List<Reporte> getReporte(string fechaInicio, string fechaFinal, List<int> usuarios)
+        {
+            return new DB().getReporte(fechaInicio, fechaFinal, usuarios);
+        }
     }
 }

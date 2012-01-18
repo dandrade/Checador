@@ -59,9 +59,20 @@ namespace Recepcion
             InitializeComponent();
         }
 
-        
+        private void WriteLog(string log) 
+        {
+            string dir = config.AppSettings.Settings["LogPath"].Value.ToString();
+            string fileName = @dir + "log_" + DateTime.Now.Date.ToShortDateString().Replace('/','-') + ".txt";
+            System.IO.StreamWriter writer = System.IO.File.AppendText(fileName);
+            writer.WriteLine(DateTime.Now.ToString());
+            writer.WriteLine(log);
+            writer.Close();
+        }
+
         private void Identificacion_Load(object sender, EventArgs e)
         {
+
+            WriteLog("Iniciando Aplicacion.");
             CheckForIllegalCrossThreadCalls = false;
             core = new GriauleFingerprintLibrary.FingerprintCore();
 
@@ -73,8 +84,11 @@ namespace Recepcion
             {
                 core.Initialize();
                 core.CaptureInitialize();
+                WriteLog("Lector Iniciado.");
             }
-            catch { }
+            catch(Exception ex){
+                WriteLog("Error al iniciar el lector - Error: "+ex.Message);
+            }
             
         }
 
@@ -82,6 +96,7 @@ namespace Recepcion
         {
             try
             {
+                WriteLog("Obteniendo Huella.");
                 huella = ie.RawImage;
                 core.Extract(huella, ref template);
                 string consulta;
@@ -105,9 +120,12 @@ namespace Recepcion
                     templateTemp.Quality = calidad;
 
                     int result = core.Identify(templateTemp, out precision);
+                    WriteLog("Resultado: "+result.ToString() + " Precision: " +  precision.ToString());
+                    
                     
                     if (result == 1)
                     {
+                        
                         //
                         Usuario = reader["id"].ToString();
                         string no_Empleado = reader["no_empleado"].ToString();
@@ -118,6 +136,9 @@ namespace Recepcion
                         string foto = reader["foto"].ToString();
                         Rol = rol;
 
+                        WriteLog("Huella encontrada.");
+                        WriteLog("Empleado: " + no_Empleado);
+
                         string inout = new Rules().isInOut(Usuario);
                         if (inout == "In")
                         {
@@ -127,15 +148,20 @@ namespace Recepcion
                                 this.nombre_completo.Text = nombreCompleto;
                                 this.rfc.Text = rfc;
                                 this.telefono.Text = telefono;
+                                label1.Text = "Entrada";
 
                                 if (!String.IsNullOrEmpty(foto))
                                 {
                                     fotoGrafia.ImageLocation = @RutaFotos + foto;
                                 }
+
+                                this.WindowState = FormWindowState.Normal;
+                                WriteLog("Entrada Registrada. " + no_Empleado);
                             }
                             else
                             {
                                 MessageBox.Show("No hemos podido registrar su entrada");
+                                WriteLog("No hemos podido registrar su entrada" + no_Empleado);
                             }
                         }
                         else
@@ -151,6 +177,20 @@ namespace Recepcion
                                 {
                                     fotoGrafia.ImageLocation = @RutaFotos + foto;
                                 }
+
+                                this.no_personal.Text = no_Empleado;
+                                this.nombre_completo.Text = nombreCompleto;
+                                this.rfc.Text = rfc;
+                                this.telefono.Text = telefono;
+                                label1.Text = "Salida";
+
+                                if (!String.IsNullOrEmpty(foto))
+                                {
+                                    fotoGrafia.ImageLocation = @RutaFotos + foto;
+                                }
+
+                                this.WindowState = FormWindowState.Normal;
+                                WriteLog("Salida Registrada. " + no_Empleado);
                             }
 
                         }
@@ -159,7 +199,7 @@ namespace Recepcion
                     }
                     else
                     {
-                        clean();
+                        WriteLog("No concuerda"); 
                     }
                 }
             }
@@ -174,7 +214,12 @@ namespace Recepcion
             int miliseconds = int.Parse(string.IsNullOrEmpty(config.AppSettings.Settings["Clean"].Value.ToString()) ? "8" : config.AppSettings.Settings["Clean"].Value.ToString());
             System.Threading.Thread.Sleep(miliseconds * 1000);
             fotoGrafia.ImageLocation = null;
-                        
+            this.no_personal.Text = "";
+            this.nombre_completo.Text = "";
+            this.rfc.Text = "";
+            this.telefono.Text = "";
+            label1.Text = "";
+            WriteLog("Limpiando datos.");
         }
 
         void core_onStatus(object source, GriauleFingerprintLibrary.Events.StatusEventArgs se)
