@@ -45,7 +45,7 @@
             // 
             // fechaInicial
             // 
-            this.fechaInicial.CustomFormat = "yyyy-MM-dd";
+            this.fechaInicial.CustomFormat = "dd/MM/yyyy";
             this.fechaInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaInicial.Location = new System.Drawing.Point(123, 19);
             this.fechaInicial.Name = "fechaInicial";
@@ -54,7 +54,7 @@
             // 
             // fechaFinal
             // 
-            this.fechaFinal.CustomFormat = "yyyy-MM-dd";
+            this.fechaFinal.CustomFormat = "dd/MM/yyyy";
             this.fechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.fechaFinal.Location = new System.Drawing.Point(363, 19);
             this.fechaFinal.Name = "fechaFinal";

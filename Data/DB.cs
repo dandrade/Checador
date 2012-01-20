@@ -263,10 +263,10 @@ namespace Recepcion.Data
 
         private string getFecha()
         {
-            string[] fechaA = DateTime.Now.ToShortDateString().Split(new char[] { '/' });
+            string[] fechaA = DateTime.Now.ToString("dd/MM/yyyy").Split(new char[] { '/' });
             string dia = fechaA[0].ToString();
             string mes = fechaA[1].ToString();
-            string ano = fechaA[2].ToString().Replace("20", "");
+            string ano = fechaA[2].ToString();
             string fecha = ano + "-" + mes + "-" + dia;
             //string fecha = dia + "/" + mes + "/" + ano;
             return fecha;
@@ -278,7 +278,7 @@ namespace Recepcion.Data
             string dia = fechaA[0].ToString();
             string mes = fechaA[1].ToString();
             string ano = fechaA[2].ToString();
-            string fecha = ano + "-" + mes + "-" + dia + " " + DateTime.Now.ToString("HH:mm:ss aa");
+            string fecha = ano + "-" + mes + "-" + dia + " " + DateTime.Now.ToString("T");
             return fecha;
         }
 

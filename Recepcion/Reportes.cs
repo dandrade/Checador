@@ -63,10 +63,22 @@ namespace Recepcion
                 }
             }
 
-            List<Reporte> reportes = logica.getReporte(this.fechaInicial.Text, this.fechaFinal.Text, usuarios);
+
+            List<Reporte> reportes = logica.getReporte(this.getFechaUSD(this.fechaInicial.Text), this.getFechaUSD(this.fechaFinal.Text), usuarios);
 
             crearPDF(reportes);
             
+        }
+
+
+        private string getFechaUSD(string value)
+        {
+            string[] fechaA = value.Split(new char[] { '/' });
+            string dia = fechaA[0].ToString();
+            string mes = fechaA[1].ToString();
+            string ano = fechaA[2].ToString();
+            string fecha = ano + "-" + mes + "-" + dia + " " + DateTime.Now.ToString("T");
+            return fecha;
         }
 
         private void crearPDF(List<Reporte> reportes)
