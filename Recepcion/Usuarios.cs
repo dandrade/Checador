@@ -19,6 +19,12 @@ namespace Recepcion
         string buscar = String.Empty;
         Usuario usuario;
 
+        public Usuarios()
+        {
+            InitializeComponent();
+            cargarUsuarios();
+            usuario = null;
+        }
 
         public Usuarios(Usuario user)
         {
@@ -61,7 +67,7 @@ namespace Recepcion
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AltaHuella alta = new AltaHuella(usuario.idUsuario.ToString());
+            AltaHuella alta = new AltaHuella();
             alta.MdiParent = this.MdiParent;
             alta.WindowState = FormWindowState.Maximized;
             alta.Show();

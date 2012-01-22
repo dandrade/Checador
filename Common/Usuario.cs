@@ -17,18 +17,24 @@ namespace Recepcion.Common
         public string Rfc { get; set; }
         public string LugarNacimiento { get; set; }
         public string FechaNacimiento { get; set; }
-        
-        
         public string Direccion { get; set; }
         public string Colonia { get; set; }
         public string CP { get; set; }
         public string Municipio { get; set; }
         public string Telefono { get; set; }
         public string Celular { get; set; }
-        public string TelefonoAdicional { get; set; }
+        
         public string Foto { get; set; }
         public string RolUser { get; set; }
         public bool Activo { get; set; }
         public bool Logged { get; set; }
+
+        public string FechaIngreso { get; set; }
+        public string EstadoCivil { get; set; }
+        public string Edad { get; set; }
+        public string Hijos { get; set; }
+        public string GradoEstudio { get; set; }
+        public string Nss { get; set; }
     }
+
 }

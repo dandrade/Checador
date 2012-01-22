@@ -76,5 +76,13 @@ namespace Recepcion
             reportes.WindowState = FormWindowState.Maximized;
             reportes.Show();
         }
+
+        private void Administracion_Load(object sender, EventArgs e)
+        {
+            Inicio inicio = new Inicio();
+            inicio.MdiParent = this;
+            inicio.WindowState = FormWindowState.Maximized;
+            inicio.Show();
+        }
     }
 }

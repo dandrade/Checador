@@ -63,19 +63,24 @@ namespace Recepcion.Data
                 usuario.ApellidoPaterno = reader["apellidoPaterno"].ToString();
                 usuario.ApellidoMaterno = reader["apellidoMaterno"].ToString();
                 usuario.LugarNacimiento = reader["lugarNacimiento"].ToString();
-                usuario.NoEmpleado = reader["no_empleado"].ToString();
-                usuario.Rfc = reader["rfc"].ToString();
                 usuario.FechaNacimiento = reader["fechaNacimiento"].ToString();
+                usuario.NoEmpleado = reader["id"].ToString();
+                usuario.Rfc = reader["rfc"].ToString();
                 usuario.Direccion = reader["direccion"].ToString();
                 usuario.Colonia = reader["colonia"].ToString();
                 usuario.CP = reader["cp"].ToString();
                 usuario.Municipio = reader["municipio"].ToString();
                 usuario.Telefono = reader["telefono"].ToString();
                 usuario.Celular = reader["celular"].ToString();
-                usuario.TelefonoAdicional = reader["telefonoAdicional"].ToString();
                 usuario.Foto = reader["foto"].ToString();
                 usuario.RolUser = reader["rol"].ToString();
                 usuario.Activo = (bool)reader["activo"];
+                usuario.FechaIngreso = reader["fechaIngreso"].ToString();
+                usuario.EstadoCivil = reader["estadoCivil"].ToString();
+                usuario.Edad = reader["edad"].ToString();
+                usuario.Hijos = reader["hijos"].ToString();
+                usuario.GradoEstudio = reader["gradoEstudio"].ToString();
+                usuario.Nss = reader["nss"].ToString();
 
                 usuarios.Add(usuario);
 
@@ -98,12 +103,13 @@ namespace Recepcion.Data
                 usuario.idUsuario = (int)reader["id"];
                 usuario.User = reader["usuario"].ToString();
                 usuario.Password = reader["password"].ToString();
+                
                 usuario.Nombre = reader["nombre"].ToString();
                 usuario.ApellidoPaterno = reader["apellidoPaterno"].ToString();
                 usuario.ApellidoMaterno = reader["apellidoMaterno"].ToString();
                 usuario.LugarNacimiento = reader["lugarNacimiento"].ToString();
                 usuario.FechaNacimiento = reader["fechaNacimiento"].ToString();
-                usuario.NoEmpleado = reader["no_empleado"].ToString();
+                usuario.NoEmpleado = reader["id"].ToString();
                 usuario.Rfc = reader["rfc"].ToString();
                 usuario.Direccion = reader["direccion"].ToString();
                 usuario.Colonia = reader["colonia"].ToString();
@@ -111,10 +117,15 @@ namespace Recepcion.Data
                 usuario.Municipio = reader["municipio"].ToString();
                 usuario.Telefono = reader["telefono"].ToString();
                 usuario.Celular = reader["celular"].ToString();
-                usuario.TelefonoAdicional = reader["telefonoAdicional"].ToString();
                 usuario.Foto = reader["foto"].ToString();
                 usuario.RolUser = reader["rol"].ToString();
                 usuario.Activo = (bool)reader["activo"];
+                usuario.FechaIngreso = reader["fechaIngreso"].ToString();
+                usuario.EstadoCivil = reader["estadoCivil"].ToString();
+                usuario.Edad = reader["edad"].ToString();
+                usuario.Hijos = reader["hijos"].ToString();
+                usuario.GradoEstudio = reader["gradoEstudio"].ToString();
+                usuario.Nss = reader["nss"].ToString();
 
                 usuarios.Add(usuario);
 
@@ -137,11 +148,11 @@ namespace Recepcion.Data
                 int inicio = ids.Length - 1;
                 ids = ids.Remove(inicio, 1);
 
-                consulta = "select v.*, concat_ws(' ', u.nombre, u.apellidoPaterno, u.apellidoMaterno) as empleado from visitas as v join usuarios as u on u.id = v.usuario where v.usuario in (" + ids + ") and v.fecha between '" + fechaInicial + "' and '" + fechaFinal + "' order by v.id";
+                consulta = "select v.*, concat_ws(' ', u.nombre, u.apellidoPaterno, u.apellidoMaterno) as empleado from visitas as v join usuarios as u on u.id = v.usuario where v.usuario in (" + ids + ") and v.fecha between '" + fechaInicial + "' and '" + fechaFinal + "' order by u.id, v.id";
             }
             else
             { 
-                consulta = "select v.*, concat_ws(' ', u.nombre, u.apellidoPaterno, u.apellidoMaterno) as empleado from visitas as v join usuarios as u on u.id = v.usuario where v.fecha between '" + fechaInicial + "' and '" + fechaFinal + "' order by v.id";
+                consulta = "select v.*, concat_ws(' ', u.nombre, u.apellidoPaterno, u.apellidoMaterno) as empleado from visitas as v join usuarios as u on u.id = v.usuario where v.fecha between '" + fechaInicial + "' and '" + fechaFinal + "' order by u.id, v.id";
             }
             MySqlDataReader reader = Ejecutar.ExecuteSQL(consulta);
 

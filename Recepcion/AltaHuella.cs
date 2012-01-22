@@ -26,7 +26,7 @@ namespace Recepcion
 
         Rules logica = new Rules();
 
-        string idAdmin = "0";
+        
         
         public Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
         string RutaFotos = string.Empty;
@@ -34,11 +34,11 @@ namespace Recepcion
         Usuario usuario;
         bool isEdit = false;
 
-        public AltaHuella(string id)
+        public AltaHuella()
         {
             InitializeComponent();
             comboBox1.SelectedIndex = 0;
-            idAdmin = id;
+            
 
             try
             {
@@ -61,6 +61,8 @@ namespace Recepcion
         public AltaHuella(Usuario usr)
         {
             InitializeComponent();
+            label15.Visible = true;
+            no_empleado.Visible = true;
             usuario = usr;
             comboBox1.SelectedIndex = 0;
             asignarValores();
@@ -93,8 +95,13 @@ namespace Recepcion
             municipio.Text = usuario.Municipio;
             telefono.Text = usuario.Telefono;
             celular.Text = usuario.Celular;
-            telefonoAdicional.Text = usuario.TelefonoAdicional;
             comboBox1.SelectedItem = usuario.RolUser;
+            fechaIngreso.Text = usuario.FechaIngreso;
+            estadoCivil.SelectedItem = usuario.EstadoCivil;
+            edad.Text = usuario.Edad;
+            hijos.Text = usuario.Hijos;
+            gradoEstudios.SelectedItem = usuario.GradoEstudio;
+            nss.Text = usuario.Nss;
             
         }
 
@@ -205,7 +212,6 @@ namespace Recepcion
                                     nombre, 
                                     apellidoPaterno, 
                                     apellidoMaterno,
-                                    no_empleado,
                                     rfc,
                                     lugarNacimiento,
                                     fechaNacimiento,
@@ -215,19 +221,23 @@ namespace Recepcion
                                     municipio,
                                     telefono,
                                     celular,
-                                    telefonoAdicional,
                                     foto,
                                     rol,
                                     activo,
                                     template,
-                                    calidad_template
+                                    calidad_template,
+                                    fechaIngreso,
+                                    estadoCivil,
+                                    edad,
+                                    hijos,
+                                    gradoEstudio,
+                                    nss
                                 )
                                 VALUES 
                                 (
                                     ?nombre, 
                                     ?apellidoPaterno, 
                                     ?apellidoMaterno,
-                                    ?no_empleado,
                                     ?rfc,
                                     ?lugarNacimiento,
                                     ?fechaNacimiento,
@@ -237,12 +247,17 @@ namespace Recepcion
                                     ?municipio,
                                     ?telefono,
                                     ?celular,
-                                    ?telefonoAdicional,
                                     ?foto,
                                     ?rol,
                                     ?activo,
                                     ?template,
-                                    ?calidad_template
+                                    ?calidad_template,
+                                    ?fechaIngreso,
+                                    ?estadoCivil,
+                                    ?edad,
+                                    ?hijos,
+                                    ?gradoEstudio,
+                                    ?nss
                                 ); select LAST_INSERT_ID()";
 
                 MySqlCommand cmd = new MySqlCommand(query, Conexion.Cnx);
@@ -250,7 +265,6 @@ namespace Recepcion
                 cmd.Parameters.AddWithValue("?nombre", nombre.Text);
                 cmd.Parameters.AddWithValue("?apellidoPaterno", apellidoPaterno.Text);
                 cmd.Parameters.AddWithValue("?apellidoMaterno", apellidoMaterno.Text);
-                cmd.Parameters.AddWithValue("?no_empleado", no_empleado.Text);
                 cmd.Parameters.AddWithValue("?rfc", rfc.Text);
                 cmd.Parameters.AddWithValue("?lugarNacimiento", lugarNacimiento.Text);
                 cmd.Parameters.AddWithValue("?fechaNacimiento", fechaNacimiento.Text);
@@ -260,11 +274,17 @@ namespace Recepcion
                 cmd.Parameters.AddWithValue("?municipio", municipio.Text);
                 cmd.Parameters.AddWithValue("?telefono", telefono.Text);
                 cmd.Parameters.AddWithValue("?celular", celular.Text);
-                cmd.Parameters.AddWithValue("?telefonoAdicional", telefonoAdicional.Text);
+                
                 cmd.Parameters.AddWithValue("?foto", Fotografia);
                 cmd.Parameters.AddWithValue("?rol", comboBox1.SelectedItem);
                 cmd.Parameters.AddWithValue("?activo", "1");
                 cmd.Parameters.AddWithValue("?calidad_template", template.Quality.ToString());
+                cmd.Parameters.AddWithValue("?fechaIngreso", fechaIngreso.Text);
+                cmd.Parameters.AddWithValue("?estadoCivil", estadoCivil.SelectedItem);
+                cmd.Parameters.AddWithValue("?edad", edad.Text);
+                cmd.Parameters.AddWithValue("?hijos", hijos.Text);
+                cmd.Parameters.AddWithValue("?gradoEstudio", gradoEstudios.SelectedItem);
+                cmd.Parameters.AddWithValue("?nss", nss.Text);
                 
 
 
@@ -327,7 +347,6 @@ namespace Recepcion
                                     nombre = ?nombre, 
                                     apellidoPaterno = ?apellidoPaterno, 
                                     apellidoMaterno = ?apellidoMaterno,
-                                    no_empleado = ?no_empleado,
                                     rfc = ?rfc,
                                     lugarNacimiento = ?lugarNacimiento,
                                     fechaNacimiento = ?fechaNacimiento,
@@ -337,9 +356,14 @@ namespace Recepcion
                                     municipio = ?municipio,
                                     telefono = ?telefono,
                                     celular = ?celular,
-                                    telefonoAdicional = ?telefonoAdicional,
                                     foto = ?foto,
-                                    rol = ?rol
+                                    rol = ?rol,
+                                    fechaIngreso = ?fechaIngreso,
+                                    estadoCivil = ?estadoCivil,
+                                    edad = ?edad,
+                                    hijos = ?hijos,
+                                    gradoEstudio = ?gradoEstudio,
+                                    nss = ?nss
                                     where id = ?id
                                 ";
 
@@ -348,7 +372,6 @@ namespace Recepcion
                 cmd.Parameters.AddWithValue("?nombre", nombre.Text);
                 cmd.Parameters.AddWithValue("?apellidoPaterno", apellidoPaterno.Text);
                 cmd.Parameters.AddWithValue("?apellidoMaterno", apellidoMaterno.Text);
-                cmd.Parameters.AddWithValue("?no_empleado", no_empleado.Text);
                 cmd.Parameters.AddWithValue("?rfc", rfc.Text);
                 cmd.Parameters.AddWithValue("?lugarNacimiento", lugarNacimiento.Text);
                 cmd.Parameters.AddWithValue("?fechaNacimiento", fechaNacimiento.Text);
@@ -358,9 +381,16 @@ namespace Recepcion
                 cmd.Parameters.AddWithValue("?municipio", municipio.Text);
                 cmd.Parameters.AddWithValue("?telefono", telefono.Text);
                 cmd.Parameters.AddWithValue("?celular", celular.Text);
-                cmd.Parameters.AddWithValue("?telefonoAdicional", telefonoAdicional.Text);
+
                 cmd.Parameters.AddWithValue("?foto", Fotografia);
                 cmd.Parameters.AddWithValue("?rol", comboBox1.SelectedItem);
+                cmd.Parameters.AddWithValue("?activo", "1");
+                cmd.Parameters.AddWithValue("?fechaIngreso", fechaIngreso.Text);
+                cmd.Parameters.AddWithValue("?estadoCivil", estadoCivil.SelectedItem);
+                cmd.Parameters.AddWithValue("?edad", edad.Text);
+                cmd.Parameters.AddWithValue("?hijos", hijos.Text);
+                cmd.Parameters.AddWithValue("?gradoEstudio", gradoEstudios.SelectedItem);
+                cmd.Parameters.AddWithValue("?nss", nss.Text);
                 
                 cmd.Parameters.AddWithValue("?id", usuario.idUsuario);
 
@@ -415,7 +445,6 @@ namespace Recepcion
             municipio.Text = "";
             telefono.Text = "";
             celular.Text = "";
-            telefonoAdicional.Text = "";
             textBox1.Text = "";
             
              
