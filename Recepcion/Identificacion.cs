@@ -105,7 +105,7 @@ namespace Recepcion
                 int precision, calidad;
 
                 // selecciono 
-                consulta = "select id, no_empleado, telefono, rfc, rol, concat_ws(' ', nombre, apellidoPaterno, apellidoMaterno) as nombreCompleto, template, calidad_template, foto from usuarios where template is not null and 1 = 1 and rol = 'Trabajador'";
+                consulta = "select id, id as no_empleado, telefono, rfc, rol, concat_ws(' ', nombre, apellidoPaterno, apellidoMaterno) as nombreCompleto, template, calidad_template, foto from usuarios where template is not null and 1 = 1";
 
                 MySqlDataReader reader = this.EjecutarQuery(consulta);
                 core.IdentifyPrepare(template);
