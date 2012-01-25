@@ -459,7 +459,7 @@ namespace Recepcion
             try
             {
                 core.CaptureFinalize();
-                core.Finalizer();
+                //core.Finalizer();
             }
             catch (Exception ex)
             {
@@ -472,7 +472,7 @@ namespace Recepcion
             try
             {
                 core.CaptureFinalize();
-                core.Finalizer();
+               // core.Finalizer();
             }
             catch (Exception ex)
             {
